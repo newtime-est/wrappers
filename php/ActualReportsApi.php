@@ -43,16 +43,14 @@ class ActualReportsApi
     CURLOPT_SSL_VERIFYPEER => false,
     CURLOPT_SSL_VERIFYHOST => false,
     CURLOPT_FOLLOWLOCATION => false,
+    CURLOPT_USERAGENT => 'actualreports-php/2.0.0',
     CURLOPT_HTTPHEADER => array(
-      CURLOPT_USERAGENT => 'actualreports-php/2.0.0',
-      CURLOPT_HTTPHEADER => array(
-        'Accept-Charset: utf-8',
-        'Content-Type: application/json'
-      )
+      'Accept-Charset: utf-8',
+      'Content-Type: application/json'
     )
   );
 
-  public function __construct($apiKey = null, $privateKey = null)
+  public function __construct($apiKey = null, $privateKey = null, $url = null)
   {
     if ($apiKey)
     {
@@ -61,6 +59,9 @@ class ActualReportsApi
     if ($privateKey)
     {
       $this->privateKey = $privateKey;
+    }
+    if ($url) {
+      $this->url = $url;
     }
   }
 
